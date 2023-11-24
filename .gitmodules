@@ -1,0 +1,12 @@
+[submodule "src/locomotion_experiments"]
+	path = src/locomotion_experiments
+	url = https://github.com/CentroEPiaggio/locomotion_experiments
+[submodule "src/mulinex_gazebo"]
+	path = src/mulinex_gazebo
+	url = https://github.com/CentroEPiaggio/mulinex_gazebo
+[submodule "src/rlg_quad_controller"]
+	path = src/rlg_quad_controller
+	url = https://github.com/CentroEPiaggio/rlg_quad_controller
+[submodule "src/mulinex_description"]
+	path = src/mulinex_description
+	url = https://github.com/CentroEPiaggio/mulinex_description

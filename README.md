@@ -22,6 +22,10 @@ Clone the repo:
 This is a project built on devcontainer. To install it, you need to have docker and vscode installed with the extension `ms-vscode-remote.remote-containers`.
  Then, you can open the project in vscode and click on the button on the bottom left corner. This will build the devcontainer and install all the dependencies.
 
+
+> **WARNING:** The project is configured to run with GPU access. If you don't have an Nvidia GPU, you need to change the devcontainer.json and remove the `--gpus=all` flag from the docker run command.
+By doing this you will not also be able to run the neural network controller.
+
 ## Usage
 **Run all the commands from the terminal inside vscode**
 

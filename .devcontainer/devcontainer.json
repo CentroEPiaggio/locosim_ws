@@ -1,0 +1,47 @@
+// See https://aka.ms/vscode-remote/devcontainer.json for format details.
+{
+	"name": "ros2_dev",
+	"build": {
+		// Sets the run context to one level up instead of the .devcontainer folder.
+		"context": "..",
+		"dockerfile": "./Dockerfile",
+		"args":{
+			"WORKSPACE": "${containerWorkspaceFolder}"
+		}
+	},
+	"remoteUser": "ros",
+	"runArgs": [
+		"--network=host",
+		"--volume=/tmp/.X11-unix:/tmp/.X11-unix",
+		"--gpus=all",
+		"--privileged",
+		"-v",
+		"/etc/localtime:/etc/localtime:ro"
+	],
+	"containerEnv": {
+		"DISPLAY": "${localEnv:DISPLAY}", // Needed for GUI try ":0" for windows
+		"WAYLAND_DISPLAY": "${localEnv:WAYLAND_DISPLAY}",
+		"XDG_RUNTIME_DIR": "${localEnv:XDG_RUNTIME_DIR}",
+		"PULSE_SERVER": "${localEnv:PULSE_SERVER}",
+		"LIBGL_ALWAYS_SOFTWARE": "1" // Needed for software rendering of opengl
+	},
+	"postCreateCommand": "/bin/bash -c 'source /opt/ros/humble/setup.bash && source ${containerWorkspaceFolder}/src/install/setup.bash'",
+	// Set *default* container specific settings.json values on container create.
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"althack.ament-task-provider",
+				"betwo.b2-catkin-tools",
+				"DotJoshJohnson.xml",
+				"ms-azuretools.vscode-docker",
+				"ms-iot.vscode-ros",
+				"ms-python.python",
+				"ms-vscode.cpptools",
+				"redhat.vscode-yaml",
+				"smilerobotics.urdf",
+				"twxs.cmake",
+				"yzhang.markdown-all-in-one",
+			]
+		}
+	}
+}

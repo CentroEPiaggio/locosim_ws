@@ -17,14 +17,17 @@ This repository contains the following packages:
 
 Clone the repo:
 
-        
+        git clone --recursive https://github.com/CentroEPiaggio/locosim_ws
 
 This is a project built on devcontainer. To install it, you need to have docker and vscode installed with the extension `ms-vscode-remote.remote-containers`.
- Then, you can open the project in vscode and click on the button on the bottom left corner. This will build the devcontainer and install all the dependencies.
+ Then, you can open the project in vscode and click on the button on the bottom left corner and select "**Reopen in container**" This will build the devcontainer and install all the dependencies.
 
 
-> **WARNING:** The project is configured to run with GPU access. If you don't have an Nvidia GPU, you need to change the devcontainer.json and remove the `--gpus=all` flag from the docker run command.
+> **WARNING:** The project is configured to run with NVIDIA GPU access. If you don't have an NVIDIA GPU, you need to change the `devcontainer.json` and remove the `--gpus=all` flag from the  run args.
 By doing this you will not also be able to run the neural network controller.
+
+### Host installation
+If you have ros humble installed on your host, you can run the simulation without the devcontainer, just open the workspace and build it with colcon.
 
 ## Usage
 **Run all the commands from the terminal inside vscode**
@@ -42,7 +45,9 @@ To run the simulation, you can use
 This will launch the simulation and the PD controller.
 To run the neural network controller, you can use `ros2 launch rlg_quad_controller mulinex_simulation.launch.py`. This will launch the simulation and the neural network controller.
 
-To perform any
+The controller listens to a reference velocity in the topic `/cmd_vel`. You can steer and controll the robot using the rqt plugin `rqt_robot_steering`. To lauch it, run in another terminal
+
+        ros2 run rqt_robot_steering rqt_robot_steering
 
 ## TODO:
 - [ ] add a script to simplify meshes

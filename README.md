@@ -32,7 +32,11 @@ If you have ros humble installed on your host, you can run the simulation withou
 ## Usage
 **Run all the commands from the terminal inside vscode**
 
-First, you need to build the project. To do so, you can use the command 
+First, you need to build the project. To do so, you can run the build task of VScode with
+
+        CTRL + SHIFT + B
+
+or, in a terminal:
 
         colcon build --symlink-install
 
@@ -49,5 +53,16 @@ The controller listens to a reference velocity in the topic `/cmd_vel`. You can 
 
         ros2 run rqt_robot_steering rqt_robot_steering
 
-## TODO:
-- [ ] add a script to simplify meshes
+## Tips and Tricks:
+
+### Simplifying meshes
+
+STL files in the mulinex_description package may be too big for most of the computers. To simplify them, you can use a dedicated script in the `mulinex_description/meshes` folder. To use it, navigate to the folder with
+
+        cd src/mulinex_description/meshes
+
+and run
+
+        python3 simplify_meshes.py
+
+This will save all the simplified meshes as `simpler_[meshname].stl` in the same folder. You can then either rename them to replace the original meshes or change the filename in the file `src/mulinex_description/urdf/links.xacro`

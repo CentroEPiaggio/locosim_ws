@@ -22,7 +22,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'traj_generator = sim_to_real.traj_generator:main'
+            'traj_generator = sim_to_real.traj_generator:main',
+            'nn_traj_generator = sim_to_real.traj_gen_nn:main'
         ],
     },
 )
